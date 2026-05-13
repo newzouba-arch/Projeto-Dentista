@@ -14,22 +14,52 @@
       --white: #ffffff;
       --bg: #fafafa;        /* Fundo limpo (Higiene) */
       --text: #334155;
+      --border: rgba(0,0,0,0.05);
     }
 
     body {
-      <nav class="navbar">
-  <div class="nav-logo">DRA. NOME SOBRENOME</div>
-  <div class="nav-links">
-    <a href="#inicio">Início</a>
-    <a href="#servicos">Especialidades</a>
-    <a href="#contato">Agendamento</a>
-  </div>
-</nav>
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
+    }
+
+    /* --- ESTILOS DO MENU --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px); 
+      z-index: 1000;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
     }
 
     /* Hero Section */
@@ -90,13 +120,22 @@
 </head>
 <body>
 
-  <section class="hero">
+  <nav class="navbar">
+    <div class="nav-logo">DRA. NOME SOBRENOME</div>
+    <div class="nav-links">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Especialidades</a>
+      <a href="#contato">Agendamento</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="inicio">
     <h1>Arquitetura do <em>Sorriso.</em></h1>
     <p>Tecnologia e arte para transformar sua confiança.</p>
     <a href="#contato" class="btn-contato">AGENDAR AVALIAÇÃO</a>
   </section>
 
-  <section class="servicos">
+  <section class="servicos" id="servicos">
     <div class="card">
       <h3>Lentes de Contato</h3>
       <p>Transformação estética com lâminas ultra-finas de porcelana.</p>
@@ -108,6 +147,26 @@
     <div class="card">
       <h3>Harmonização</h3>
       <p>Equilíbrio e beleza para os traços do seu rosto.</p>
+    </div>
+  </section>
+
+  <section id="contato" style="padding: 80px 10%; background: #ffffff;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--primary); text-align: center;">Solicitar Agendamento</h2>
+      <p style="text-align: center; margin-bottom: 40px;">Preencha os dados abaixo para entrarmos em contato.</p>
+      
+      <form action="https://formspree.io/f/xaqvvlpn" method="POST" style="display: grid; gap: 20px;">
+        <input type="text" name="nome" placeholder="Seu Nome Completo" required style="padding: 15px; border: 1px solid #ddd;">
+        <input type="tel" name="whatsapp" placeholder="WhatsApp" required style="padding: 15px; border: 1px solid #ddd;">
+        <select name="servico" required style="padding: 15px; border: 1px solid #ddd;">
+          <option value="" disabled selected>Serviço de interesse</option>
+          <option>Lentes de Contato</option>
+          <option>Implantes</option>
+          <option>Harmonização</option>
+        </select>
+        <textarea name="mensagem" placeholder="Sua mensagem" rows="4" style="padding: 15px; border: 1px solid #ddd;"></textarea>
+        <button type="submit" class="btn-contato" style="border: none; cursor: pointer;">ENVIAR SOLICITAÇÃO</button>
+      </form>
     </div>
   </section>
 
